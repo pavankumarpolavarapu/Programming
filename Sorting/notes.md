@@ -1,5 +1,5 @@
 # Notes
-## <a href="selectionsort"> Selection Sort </a> 
+## <a name="selectionsort"> Selection Sort </a> 
 Iteratively find the least element and put it in a new array and replace the existing element with largest value. (not In place)
 For In Place, iteratively find the least element and swap the position with one position after last sorted element.
 ```Python
@@ -41,3 +41,38 @@ def insertionsort(a):
             block = block - 1
         a[block] = key
     return a
+```
+
+## <a name="mergesort"> Merge Sort </a>
+Recursively divide the array into sub elements of possible equal sizes until they are sorted. Generally for an unsorted array, we would have to divide until there is only one element left. Once all the elements are divided, merge them comparing both left and right divisions.
+
+```Python
+def mergesort(a):
+    if(len(a)>1):
+        mid = len(a) // 2
+        L = a[:mid]
+        R = a[mid:]
+        #Recursively subdivide till there is only one element left
+        mergesort(L)
+        mergesort(R)
+        #i = index of left, j = index of right, k = index of merged array
+        i = j = k = 0
+
+        while( i < len(L) and j < len(R)):
+            if( L[i] < R[j]):
+                a[k] = L[i]
+                i = i + 1
+            else:
+                a[k] = R[j]
+                j = j + 1
+            k = k + 1
+        while ( i < len(L)):
+            a[k] = L[i]
+            k = k + 1
+            i = i + 1
+        while ( j < len(R)):
+            a[k] = R[j]
+            k = k + 1
+            j = j + 1
+        return a
+```

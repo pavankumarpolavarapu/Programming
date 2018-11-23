@@ -36,6 +36,7 @@ def insertionsort(a):
     for i in range(1, len(a)):
         key = a[i]
         block = i
+        #Compare blocks previous element with key recursively
         while ( block > 0 and a[block-1] > key):
             a[block] = a[block-1]
             block = block - 1
@@ -57,7 +58,7 @@ def mergesort(a):
         mergesort(R)
         #i = index of left, j = index of right, k = index of merged array
         i = j = k = 0
-
+        #Find smallest entry comparing two divisions and insert the lowest into array at kth index
         while( i < len(L) and j < len(R)):
             if( L[i] < R[j]):
                 a[k] = L[i]
@@ -66,13 +67,24 @@ def mergesort(a):
                 a[k] = R[j]
                 j = j + 1
             k = k + 1
+        #Loop if there are any left over elements in left array
         while ( i < len(L)):
             a[k] = L[i]
             k = k + 1
             i = i + 1
+        #Loop if there are any left over elements in right array
         while ( j < len(R)):
             a[k] = R[j]
             k = k + 1
             j = j + 1
         return a
 ```
+## <a name="quicksort"> Quick Sort </a>
+It is the common sorting algorithm in many programming languages and the advantage of it over merge sort is that it doesn't require additional O(n) auxillary space as in merge sort. 
+Pick a pivot element, usually last element, create an array such that elements less than pivot element are to the left and greater than are to the right. 
+```Python
+def subDi
+def QuickSort(a, begin, end):
+    pivot = a[end]
+    pIndex = subDivisionPartition(pivot)
+``` 

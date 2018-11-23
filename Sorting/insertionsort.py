@@ -2,6 +2,7 @@ def insertionsort(a):
     for i in range(1, len(a)):
         key = a[i]
         block = i
+        #Compare blocks previous element with key recursively
         while ( block > 0 and a[block-1] > key):
             a[block] = a[block-1]
             block = block - 1

@@ -83,8 +83,20 @@ def mergesort(a):
 It is the common sorting algorithm in many programming languages and the advantage of it over merge sort is that it doesn't require additional O(n) auxillary space as in merge sort. 
 Pick a pivot element, usually last element, create an array such that elements less than pivot element are to the left and greater than are to the right. 
 ```Python
-def subDi
-def QuickSort(a, begin, end):
-    pivot = a[end]
-    pIndex = subDivisionPartition(pivot)
+def Partition(A, begin, end):
+    pivot = A[end]
+    partitionIndex = begin
+    for j in range(begin, end):
+        if( A[j] <= pivot):
+            A[j], A[partitionIndex] = A[partitionIndex], A[j]
+            partitionIndex += 1
+    A[partitionIndex], A[end] = A[end], A[partitionIndex]
+    return partitionIndex
+
+def QuickSort(A, begin, end):
+    if( begin < end):
+        partitionIndex = Partition(A, begin, end)
+        QuickSort(A, begin, partitionIndex - 1)
+        QuickSort(A, partitionIndex + 1, end)
+    return A
 ``` 
